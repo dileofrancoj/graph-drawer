@@ -1,3 +1,4 @@
+import Board from "./components/Board";
 import Canvas from "./components/Canvas";
 import { ClearCanvasButton } from "./components/ClearCanvas";
 import { CanvasProvider } from "./providers/CanvasProvider";
@@ -7,8 +8,7 @@ function App() {
   return (
     <NodesProvider>
       <CanvasProvider>
-        <Canvas />
-        <ClearCanvasButton />
+        <Board />
       </CanvasProvider>
     </NodesProvider>
   );
