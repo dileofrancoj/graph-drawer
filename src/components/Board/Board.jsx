@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ClearCanvas from "./components/ClearCanvas";
 import { useCanvas } from "../../providers/CanvasProvider";
 
 function Board() {
@@ -11,13 +12,15 @@ function Board() {
 
   return (
     <>
+      <ClearCanvas />
+
       <canvas
         onMouseDown={startDrawing}
         onMouseUp={finishDrawing}
         onClick={drawNodes}
         ref={canvasRef}
-        width="100%"
-        height="90vh"
+        width="400"
+        height="400"
       />
     </>
   );

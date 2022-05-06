@@ -1,6 +1,4 @@
 import Board from "./components/Board";
-import Canvas from "./components/Canvas";
-import { ClearCanvasButton } from "./components/ClearCanvas";
 import { CanvasProvider } from "./providers/CanvasProvider";
 import { NodesProvider } from "./providers/NodesProvider";
 

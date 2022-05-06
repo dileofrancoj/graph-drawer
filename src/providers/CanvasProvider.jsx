@@ -46,6 +46,7 @@ export const CanvasProvider = ({ children }) => {
   };
 
   const drawNodes = () => {
+    const createdNode = createNode();
     contextRef.current.beginPath();
     contextRef.current.arc(
       coords.initialX,
@@ -55,7 +56,7 @@ export const CanvasProvider = ({ children }) => {
       2 * Math.PI
     );
     contextRef.current.font = "20px Arial";
-    const createdNode = createNode();
+
     contextRef.current.fillText(
       createdNode.name,
       coords.initialX - 6,
