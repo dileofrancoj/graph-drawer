@@ -33,16 +33,30 @@ export const CanvasProvider = ({ children }) => {
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
+    setCoords({ ...coords, initialX: offsetX, initialY: offsetY });
     contextRef.current.beginPath();
     contextRef.current.moveTo(offsetX, offsetY);
     setIsDrawing(true);
-    setCoords({ ...coords, initialX: offsetX, initialY: offsetY });
   };
 
   const finishDrawing = () => {
     contextRef.current.closePath();
-
     setIsDrawing(false);
+  };
+
+  const draw = (type) => {
+    if (type === "node") return drawNodes();
+    return drawLine();
+  };
+
+  const drawLine = () => {
+    contextRef.current.lineWidth = 1;
+    contextRef.current.strokeStyle = "#f00";
+
+    contextRef.current.beginPath();
+    contextRef.current.moveTo(coords.initialX, coords.initialY);
+    contextRef.current.lineTo(coords.finalX, coords.finalY);
+    contextRef.current.stroke();
   };
 
   const drawNodes = () => {
@@ -82,6 +96,7 @@ export const CanvasProvider = ({ children }) => {
         finishDrawing,
         clearCanvas,
         drawNodes,
+        draw,
       }}
     >
       {children}
